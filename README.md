@@ -5,3 +5,6 @@ time range =  1997 to 2025 and event = Russia Ukraine War
 
 time range =  1997 to 2025 and event = covid 19 pandemic
 <img width="993" alt="image" src="https://github.com/shivam-gupta12/inflation-forecasting-prediction-and-analysis/assets/109721120/6ee4e5fd-1f57-48d4-bb48-48b8d75421cf">
+
+time range = 1997 to 2025 and event = None <<---- incorrect o/p
+<img width="993" alt="image" src="https://github.com/shivam-gupta12/inflation-forecasting-prediction-and-analysis/assets/109721120/b998178a-1c8a-4187-adfd-1b4f68208cfd">
