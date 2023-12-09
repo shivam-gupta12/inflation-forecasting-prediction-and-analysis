@@ -136,13 +136,15 @@ def predict_datapoint():
             return conf_interval['index'].to_list()
 
         indx_list = index_list()
-        for date_point, label, clr in event_list:
-            plt.axvline(x=date_point, color=clr, linestyle=':')
-            plt.text(x=date_point, y=23, s=label, horizontalalignment='center', verticalalignment='center',
-                     color=clr, bbox=dict(facecolor='white', alpha=0.9, boxstyle='round, pad=1', linewidth=0.2))
+        plt.figure(figsize=(16, 6))
+        if event== "None":
+            plt.axvline(x=pd.to_datetime("2022-11-09"), color="purple", linestyle=':')
+        else:
+            plt.axvline(x=event_list[1][0], color="purple", linestyle=':')
+        plt.text(x=event_list[1][0], y=17, s="Start of Forecast", horizontalalignment='center', verticalalignment='center',
+                    color="crimson", bbox=dict(facecolor='white', alpha=0.9, boxstyle='round, pad=1', linewidth=0.2))
 
         df = pd.read_csv("/Users/damodargupta/Desktop/EPICS-PROJECT/date-wise-data.csv")
-        plt.figure(figsize=(16, 6))
         get_inflation_rate_range(df, start_date, end_date)    
         yhat.plot(legend=True, color='green')
         conf_int_95['mean'].plot(legend=True, label='Forecast', color='crimson')
@@ -151,7 +153,12 @@ def predict_datapoint():
         plt.fill_between(x=indx_list, y1=conf_int_70['mean_ci_upper'], y2=conf_int_70['mean_ci_lower'],
                          alpha=0.6, label='70% Confidence\nInterval', linewidth=0)
         plt.xlim([start_date, end_date])
-        plt.title(f'Inflation Forecast: {start_date} to {end_date}')
+        if event == "Ukraine-Russia War":
+            plt.title(f'Inflation Forecast: 2022-02-28 to {end_date}')
+        elif event == "Covid 19 Pandemic":
+            plt.title(f'Inflation Forecast: 2022-04-20 to {end_date}')
+        else: 
+            plt.title(f'Inflation Forecast: {start_date} to {end_date}')
         plt.legend(loc='upper left')
         plt.savefig('/Users/damodargupta/Desktop/EPICS-PROJECT/plot.png', format='png')
 
