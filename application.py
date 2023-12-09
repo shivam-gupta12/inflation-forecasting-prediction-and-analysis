@@ -100,12 +100,10 @@ def index():
 
 def get_inflation_rate_range(df, start, end):
     dataframe = pd.read_csv("/Users/damodargupta/Desktop/EPICS-PROJECT/date-wise-data.csv")
-    # Convert 'Date' column to datetime if not already done
-    if dataframe['Date'].dtype == 'object':
-        dataframe['Date'] = pd.to_datetime(dataframe['Date'])
-    # Filter the dataframe for the given range of dates
-    filtered_df = dataframe[(dataframe['Date'] >= start) & (dataframe['Date'] <= end)]
-    return filtered_df['Rate']
+    df['Date'] = pd.to_datetime(df['Date'])
+    # Create filtered DataFrame
+    filtered_df = df[(df['Date'] >= start) & (df['Date'] <= end)]
+    plt.plot(filtered_df['Date'], filtered_df['Rate'], marker='o', linestyle='-')
 
 @app.route('/predictdata', methods=['GET', 'POST'])
 def predict_datapoint():
@@ -119,11 +117,17 @@ def predict_datapoint():
         print(event)
 
         if event == "Ukraine-Russia War":
-            event_list = [(pd.to_datetime(start_date), 'Start of\nRussian Invasion', 'purple')]
+            event_list = [(pd.to_datetime(start_date), 'Start of\nRussian Invasion', 'purple'), (pd.to_datetime("2022-02-28"), 'Start of\nForecast', 'crimson')]
+            yhat = model_fit.predict(start=pd.to_datetime("2022-02-28"), end=end_date, typ='levels', dynamic=False).rename('Predict')
+            print(event_list)
+        elif event == "Covid 19 Pandemic":
+            event_list = [(pd.to_datetime(start_date), 'Start of\nForecast', 'purple'), (pd.to_datetime("2022-04-20"), 'Start of\nForecast', 'crimson')]
+            yhat = model_fit.predict(start=pd.to_datetime("2022-04-20"), end=end_date, typ='levels', dynamic=False).rename('Predict')
+            print(event_list)
         else:
-            event_list = [(pd.to_datetime(end_date), 'Start of\nForecast', 'crimson')]
-
-        yhat = model_fit.predict(start=start_date, end=end_date, typ='levels', dynamic=False).rename('Predict')
+            event_list = [(pd.to_datetime(start_date), 'Start of\nRussian Invasion', 'purple'), (pd.to_datetime(end_date), 'Start of\nForecast', 'crimson')]
+            yhat = model_fit.predict(start=start_date, end=end_date, typ='levels', dynamic=False).rename('Predict')
+            
         conf_int_70 = model_fit.get_forecast(steps=6).summary_frame(alpha=0.3)
         conf_int_95 = model_fit.get_forecast(steps=6).summary_frame(alpha=0.05)
 
@@ -132,17 +136,14 @@ def predict_datapoint():
             return conf_interval['index'].to_list()
 
         indx_list = index_list()
-        print
         for date_point, label, clr in event_list:
             plt.axvline(x=date_point, color=clr, linestyle=':')
             plt.text(x=date_point, y=23, s=label, horizontalalignment='center', verticalalignment='center',
                      color=clr, bbox=dict(facecolor='white', alpha=0.9, boxstyle='round, pad=1', linewidth=0.2))
 
-        df = pd.read_excel("/Users/damodargupta/Desktop/EPICS-PROJECT/inflation_ratings.xlsx")
-        series = get_inflation_rate_range(df, start_date, end_date)
-    
+        df = pd.read_csv("/Users/damodargupta/Desktop/EPICS-PROJECT/date-wise-data.csv")
         plt.figure(figsize=(16, 6))
-        series.plot(legend=True, label='Actual', color='orange')
+        get_inflation_rate_range(df, start_date, end_date)    
         yhat.plot(legend=True, color='green')
         conf_int_95['mean'].plot(legend=True, label='Forecast', color='crimson')
         plt.fill_between(x=indx_list, y1=conf_int_95['mean_ci_upper'], y2=conf_int_95['mean_ci_lower'],
@@ -151,8 +152,8 @@ def predict_datapoint():
                          alpha=0.6, label='70% Confidence\nInterval', linewidth=0)
         plt.xlim([start_date, end_date])
         plt.title(f'Inflation Forecast: {start_date} to {end_date}')
-        print(plt.title)
         plt.legend(loc='upper left')
+        plt.savefig('/Users/damodargupta/Desktop/EPICS-PROJECT/plot.png', format='png')
 
         # Save the plot to BytesIO object
         plot_img = io.BytesIO()
