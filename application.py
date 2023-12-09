@@ -126,7 +126,7 @@ def predict_datapoint():
             print(event_list)
         else:
             event_list = [(pd.to_datetime(start_date), 'Start of\nRussian Invasion', 'purple'), (pd.to_datetime(end_date), 'Start of\nForecast', 'crimson')]
-            yhat = model_fit.predict(start=start_date, end=end_date, typ='levels', dynamic=False).rename('Predict')
+            yhat = model_fit.predict(start=pd.to_datetime("2020-01-31"), end=end_date, typ='levels', dynamic=False).rename('Predict')
             
         conf_int_70 = model_fit.get_forecast(steps=6).summary_frame(alpha=0.3)
         conf_int_95 = model_fit.get_forecast(steps=6).summary_frame(alpha=0.05)
@@ -139,9 +139,11 @@ def predict_datapoint():
         plt.figure(figsize=(16, 6))
         if event== "None":
             plt.axvline(x=pd.to_datetime("2020-01-31"), color="purple", linestyle=':')
+            plt.text(x=pd.to_datetime("2020-01-31"), y=17, s="Start of Forecast", horizontalalignment='center', verticalalignment='center',
+                    color="crimson", bbox=dict(facecolor='white', alpha=0.9, boxstyle='round, pad=1', linewidth=0.2))
         else:
             plt.axvline(x=event_list[1][0], color="purple", linestyle=':')
-        plt.text(x=event_list[1][0], y=17, s="Start of Forecast", horizontalalignment='center', verticalalignment='center',
+            plt.text(x=event_list[1][0], y=17, s="Start of Forecast", horizontalalignment='center', verticalalignment='center',
                     color="crimson", bbox=dict(facecolor='white', alpha=0.9, boxstyle='round, pad=1', linewidth=0.2))
 
         df = pd.read_csv("/Users/damodargupta/Desktop/EPICS-PROJECT/date-wise-data.csv")
@@ -158,7 +160,7 @@ def predict_datapoint():
         elif event == "Covid 19 Pandemic":
             plt.title(f'Inflation Forecast: 2020-01-31 to {end_date}')
         else: 
-            plt.title(f'Inflation Forecast: {start_date} to {end_date}')
+            plt.title(f'Inflation Forecast: 2020-01-31 to {end_date}')
         plt.legend(loc='upper left')
         plt.savefig('/Users/damodargupta/Desktop/EPICS-PROJECT/plot.png', format='png')
 
