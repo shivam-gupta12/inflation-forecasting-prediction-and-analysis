@@ -121,8 +121,8 @@ def predict_datapoint():
             yhat = model_fit.predict(start=pd.to_datetime("2022-02-28"), end=end_date, typ='levels', dynamic=False).rename('Predict')
             print(event_list)
         elif event == "Covid 19 Pandemic":
-            event_list = [(pd.to_datetime(start_date), 'Start of\nForecast', 'purple'), (pd.to_datetime("2022-04-20"), 'Start of\nForecast', 'crimson')]
-            yhat = model_fit.predict(start=pd.to_datetime("2022-04-20"), end=end_date, typ='levels', dynamic=False).rename('Predict')
+            event_list = [(pd.to_datetime(start_date), 'Start of\nForecast', 'purple'), (pd.to_datetime("2020-01-31"), 'Start of\nForecast', 'crimson')]
+            yhat = model_fit.predict(start=pd.to_datetime("2020-01-31"), end=end_date, typ='levels', dynamic=False).rename('Predict')
             print(event_list)
         else:
             event_list = [(pd.to_datetime(start_date), 'Start of\nRussian Invasion', 'purple'), (pd.to_datetime(end_date), 'Start of\nForecast', 'crimson')]
@@ -138,7 +138,7 @@ def predict_datapoint():
         indx_list = index_list()
         plt.figure(figsize=(16, 6))
         if event== "None":
-            plt.axvline(x=pd.to_datetime("2022-11-09"), color="purple", linestyle=':')
+            plt.axvline(x=pd.to_datetime("2020-01-31"), color="purple", linestyle=':')
         else:
             plt.axvline(x=event_list[1][0], color="purple", linestyle=':')
         plt.text(x=event_list[1][0], y=17, s="Start of Forecast", horizontalalignment='center', verticalalignment='center',
@@ -156,7 +156,7 @@ def predict_datapoint():
         if event == "Ukraine-Russia War":
             plt.title(f'Inflation Forecast: 2022-02-28 to {end_date}')
         elif event == "Covid 19 Pandemic":
-            plt.title(f'Inflation Forecast: 2022-04-20 to {end_date}')
+            plt.title(f'Inflation Forecast: 2020-01-31 to {end_date}')
         else: 
             plt.title(f'Inflation Forecast: {start_date} to {end_date}')
         plt.legend(loc='upper left')
