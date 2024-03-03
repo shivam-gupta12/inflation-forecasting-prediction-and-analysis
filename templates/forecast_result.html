@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forecast Result</title>
+    <!-- Import Plotly.js library -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h2>Forecast Result</h2>
+    <p>Category: {{ category }}</p>
+    <p>Start Date: {{ start_date }}</p>
+    <p>End Date: {{ end_date }}</p>
+    
+    <!-- Create a div to hold the plot -->
+    <div id="forecastPlot"></div>
+
+    <script>
+    window.onload = function() {
+        // Get the forecast values from the Flask template
+        // Note: You cannot console.log(forecast_result) directly as it's a Python dictionary, not a JavaScript object
+        var forecastValues = {{ forecast_result.forecast_values | tojson | safe }};
+        console.log(forecastValues);
+
+        // Create an array of dates between the start and end dates
+        var startDate = new Date("{{ start_date }}");
+        console.log(startDate);
+        var endDate = new Date("{{ end_date }}");
+        console.log(endDate);
+        var dateRange = [];
+        // Function to add months to a date
+        function addMonths(date, months) {
+            var d = new Date(date);
+            d.setMonth(d.getMonth() + months);
+            return d;
+        }
+
+        // Iterate over months and add to dateRange array
+        for (var d = new Date(startDate); d <= endDate; d = addMonths(d, 1)) {
+            dateRange.push(new Date(d));
+        }
+
+        console.log(dateRange);
+        // Create a Plotly trace for the forecast line plot
+        var trace = {
+            x: dateRange,
+            y: forecastValues,
+            type: 'scatter',
+            mode: 'lines',
+            name: 'Forecast'
+        };
+
+        // Layout settings for the plot
+        var layout = {
+            title: 'Forecast Plot',
+            xaxis: { title: 'Date' },
+            yaxis: { title: 'Forecast Value' }
+        };
+
+        // Plot the forecast using Plotly.js
+        Plotly.newPlot('forecastPlot', [trace], layout);
+    };
+</script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forecasting Input Form</title>
+</head>
+<body>
+    <h2>Forecasting Form</h2>
+    <form action="/submit_form" method="post">
+        <!-- If you have predefined categories, use a dropdown like this -->
+        <label for="category">Category:</label><br>
+        <select id="category" name="category">
+            <option value="Cereals and products">Cereals and products</option>
+            <option value="Clothing">Clothing</option>
+            <option value="Clothing and footwear">Clothing and footwear</option>
+            <option value="Consumer Food Price Index">Consumer Food Price Index</option>
+            <option value="Education">Education</option>
+            <option value="Egg">Egg</option>
+            <option value="Food and beverages">Food and beverages</option>
+            <option value="Footwear">Footwear</option>
+            <option value="Fruits">Fruits</option>
+            <option value="Fuel and light">Fuel and light</option>
+            <option value="Health">Health</option>
+            <option value="Household goods and services">Household goods and services</option>
+            <option value="Housing">Housing</option>
+            <option value="Meat and fish">Meat and fish</option>
+            <option value="Milk and products">Milk and products</option>
+            <option value="Miscellaneous">Miscellaneous</option>
+            <option value="Non-alcoholic beverages">Non-alcoholic beverages</option>
+            <option value="Oils and fats">Oils and fats</option>
+            <option value="Pan; tobacco; and intoxicants">Pan; tobacco; and intoxicants</option>
+            <option value="Personal care and effects">Personal care and effects</option>
+            <option value="Prepared meals; snacks; sweets etc.">Prepared meals; snacks; sweets etc.</option>
+            <option value="Pulses and products">Pulses and products</option>
+            <option value="Recreation and amusement">Recreation and amusement</option>
+            <option value="Spices">Spices</option>
+            <option value="Sugar and confectionery">Sugar and confectionery</option>
+            <option value="Transport and communication">Transport and communication</option>
+            <option value="Vegetables">Vegetables</option>
+            
+        </select><br><br>
+        <label for="start_date">Start Date:</label><br>
+        <input type="date" id="start_date" name="start_date" required pattern="\d{4}-\d{2}-\d{2}" placeholder="yyyy-mm-dd"><br><br>
+        <label for="end_date">End Date:</label><br>
+        <input type="date" id="end_date" name="end_date" required pattern="\d{4}-\d{2}-\d{2}" placeholder="yyyy-mm-dd"><br><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
