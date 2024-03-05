@@ -1,0 +1,189 @@
+/* Updated styles with increased font size for member names and centered alignment */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f9ee;
+}
+
+header {
+    background-color: #3498db;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+h1 {
+    margin: 0;
+}
+
+.me {
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+/* .team-member { */
+    
+    /* width: 300px;
+    margin: 20px;
+    text-align: center; */
+/* } */
+
+/* .card {
+    background-color: #fff;
+    height: 40px;
+    width: 90vw;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+    /* float: right; */
+    /* margin-right: 0px;
+    margin-left: 50px; */
+    /* align-items: center;
+    justify-content: center;
+    display: flex; */
+/* }  */
+
+/* .card:hover {
+    transform: scale(1.05);
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px 8px 0 0;
+    transition: transform 0.3s ease-in-out;
+} */
+
+.info {
+    margin-bottom: 30px;
+}
+
+.name {
+    color: #3498db;
+    font-size: 16px;
+    /* margin-bottom: 10px; */
+    text-align: center;
+}
+
+.role {
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* .card:hover .role {
+    opacity: 1;
+    transform: translateY(0);
+} */
+.fa {
+    size:15vw;
+}
+
+.filter {
+    width: 50vw;
+    /* margin: 5px; */
+    margin-top: 10px;
+    /* margin-left: 57vw; */
+    text-align: center;
+    /* margin-right: 20px; */
+    /* float: right; */
+
+}
+.abc1{
+    background-color: #fff;
+    height: 26vw;
+    width: 32vw;
+    /* width: 200%;
+    padding-right: 20px;
+    width: 500px;
+    margin: 20px; */
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+    /* flex-wrap: wrap; */
+    /* padding-right: 50px; */
+    margin: 20px;
+    margin-left: 37px;
+    
+    /* float: left; */
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    
+}
+.img1{
+    height : 370px;
+    width: 645px;
+    margin: 10px;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+}
+.ab1{
+    background-color: #fff;
+    height: 26vw;
+    width: 68vw;
+    /* width: 200%;
+    padding-right: 20px;
+    width: 500px;
+    margin: 20px; */
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+    /* flex-wrap: wrap; */
+    /* padding-right: px; */
+    /* margin-top: 30px; */
+    /* margin-right: 20vw; */
+    margin-left: 37px;
+    margin-top: 30px;
+    /* margin: 30px; */
+    /* float: left; */
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+}
+
+.aba1{
+    background-color: #fff;
+    height: 26vw;
+    width: 68vw;
+    /* width: 200%;
+    padding-right: 20px;
+    width: 500px;
+    margin: 20px; */
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+    /* flex-wrap: wrap; */
+    /* padding-right: px; */
+    margin-left: 55px;
+    margin-top: 32px;
+    /* float: left; */
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+}
+.new1{
+    width: 85vw;
+    height: 35vw;
+    padding-left: 50px;
+    margin-left: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+

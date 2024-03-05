@@ -1,0 +1,77 @@
+/* Updated styles with increased font size for member names and centered alignment */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f9ee;
+}
+
+header {
+    background-color: #3498db;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+h1 {
+    margin: 0;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.team-member {
+    width: 300px;
+    margin: 20px;
+    text-align: center;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px 8px 0 0;
+    transition: transform 0.3s ease-in-out;
+}
+
+.info {
+    padding: 20px;
+}
+
+.name {
+    color: #3498db;
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.role {
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.card:hover .role {
+    opacity: 1;
+    transform: translateY(0);
+}
+.fa {
+    size:15vw;
+}
