@@ -366,6 +366,8 @@ def predictdatacategorical():
             'end_date': end_date
         }
     })
+    
+
 
 
 if __name__ == "__main__":

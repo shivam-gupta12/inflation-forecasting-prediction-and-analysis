@@ -256,7 +256,23 @@ document.getElementById("searchInput").addEventListener("input", function() {
   searchCategories();
 });
 
+
 // function selectInput(list){
 //   inputBox.value = list.innerHTML;
 //   resultBox.innerHTML='';
 // }
+
+function aboutus() {
+    var mySpan = document.getElementById("mySpan");
+
+    if (mySpan) {
+        mySpan.addEventListener("click", function() {
+            // Directly pass the URL rendered by Flask's url_for function
+            var url = 'about';
+
+            // Open the URL in a new tab/window
+            window.open(url);
+        });
+    }
+}
+
